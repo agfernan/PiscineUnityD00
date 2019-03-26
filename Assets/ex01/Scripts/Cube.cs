@@ -15,7 +15,6 @@ public class Cube : MonoBehaviour
 	{
 		targetPosY = -transform.position.y;
 		speed = Random.Range(8f, 15f);
-		Debug.Log(Camera.main.rect.yMax);
 	}
 	
 	// Update is called once per frame
