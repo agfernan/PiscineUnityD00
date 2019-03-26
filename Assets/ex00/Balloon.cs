@@ -3,9 +3,14 @@ using UnityEngine;
 
 public class Balloon : MonoBehaviour
 {
+	//Breath related
 	public float maxBreath;
 	private float breath;
 	private bool recovering;
+	private const float breathReduce = 60f;
+	private const float breathIncrease = 10f;
+	
+	//Scale related
 	public float transformRatio;
 	
 	// Use this for initialization
@@ -19,7 +24,7 @@ public class Balloon : MonoBehaviour
 		
 		if (transform.localScale.x >= 10)
 		{
-			Debug.Log("Balloon life time: ${time}s".Replace("${time}", Mathf.RoundToInt(Time.time).ToString()));
+			Debug.Log("Balloon life time: " + Mathf.RoundToInt(Time.time) + "s");
 			Destroy(gameObject);
 		}
 		
@@ -27,14 +32,14 @@ public class Balloon : MonoBehaviour
 		{
 			if (Input.GetKeyDown(KeyCode.Space))
 			{
-				breath -= 100 * Time.deltaTime;
+				breath -= breathReduce * Time.deltaTime;
 				transform.localScale += Vector3.one * 10 * transformRatio * Time.deltaTime;
 			}
 		}
 		else if (breath >= maxBreath)
 			recovering = false;
 		
-		breath += 10 * Time.deltaTime;
+		breath += breathIncrease * Time.deltaTime;
 		breath = breath > maxBreath ? maxBreath : breath;
 		if (breath <= 0)
 		{
