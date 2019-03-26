@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
     public Transform topBorder;
     public Transform bottomBorder;
 
-    
     //movement related
     private Vector3 cacheVec;
     private int direction;
@@ -26,9 +25,6 @@ public class Player : MonoBehaviour
     {
         bool upPressed = Input.GetKey(keyUp);
         bool downPressed = Input.GetKey(keyDown);
-
-        Debug.Log(upPressed);
-        Debug.Log(downPressed);
 
         if (!downPressed && upPressed)
             direction = 1;
